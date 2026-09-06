@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+@keyframes spin-blades {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.blades-spin {
+  animation: spin-blades linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes ocean-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 0.95; transform: translateY(-2px); }
+}
+
+.ocean-pulse {
+  animation: ocean-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes sun-glow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 16px rgba(244, 168, 37, 0.6)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 28px rgba(244, 168, 37, 0.9)); }
+}
+
+.sun-glow {
+  animation: sun-glow 3s ease-in-out infinite;
+}
+
+@keyframes pipe-flow {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.pipe-flow {
+  stroke-dasharray: 6 3;
+  animation: pipe-flow 1.2s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom slick scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 42, 74, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 212, 191, 0.7);
+}
