@@ -26,6 +26,17 @@
         "reveal": "always",
         "panel": "new"
       }
+    },
+    {
+      "label": "Inspect Database & Redis",
+      "type": "shell",
+      "command": "python",
+      "args": ["view_database.py"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
     }
   ]
 }

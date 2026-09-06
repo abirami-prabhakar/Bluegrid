@@ -4,15 +4,20 @@ Run in VS Code terminal:
     python view_database.py
 """
 import os
+import sys
 import json
+
+# Ensure UTF-8 output on Windows terminal
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DB_DIR = os.path.join(ROOT, "database")
 
 def show_postgres():
-    print("\n" + "═" * 88)
-    print("  🐘 POSTGRESQL DATABASE: `bluegrid` (Host: 127.0.0.1:5432)")
-    print("═" * 88)
+    print("\n" + "=" * 88)
+    print("  [POSTGRESQL DATABASE]: `bluegrid` (Host: 127.0.0.1:5432)")
+    print("=" * 88)
 
     # 1. Table: islands
     print("\n[TABLE 1: `islands`] — Master Island Meteorological & Oceanographic Metadata")
@@ -42,19 +47,19 @@ def show_postgres():
     for sid, isl, cap, lolp, lcoe, capex, co2 in sample_scenarios:
         lolp_str = f"{lolp:.2f}%"
         lcoe_str = f"₹{lcoe:.2f}"
-        capex_str = f"₹{capex:.1f} Cr"
+        capex_str = f"Rs {capex:.1f} Cr"
         co2_str = f"{co2:,} t/yr"
         print(f"#{sid:<3} {isl:<11} {cap:<36} {lolp_str:<10} {lcoe_str:<10} {capex_str:<12} {co2_str}")
 
-    print("\n[TABLE 3: `hourly_resource_timeseries`] — 8,760 Hourly Records / Island")
+    print("\n[TABLE 3: `hourly_resource_timeseries`] -- 8,760 Hourly Records / Island")
     print("  • Total records per year: 8,760 rows per island (26,280 total across Lakshadweep)")
     print("  • Columns: hour_index, wind_speed_ms, ghi_wm2, sea_surface_temp_c, deep_sea_temp_c, delta_t_c")
 
 
 def show_redis():
-    print("\n" + "═" * 88)
-    print("  ⚡ REDIS IN-MEMORY KEY-VALUE CACHE (Host: 127.0.0.1:6379)")
-    print("═" * 88)
+    print("\n" + "=" * 88)
+    print("  [REDIS IN-MEMORY KEY-VALUE CACHE] (Host: 127.0.0.1:6379)")
+    print("=" * 88)
 
     redis_file = os.path.join(DB_DIR, "redis_cache_snapshot.json")
     if os.path.exists(redis_file):
@@ -78,14 +83,14 @@ def show_redis():
                 preview = str(val)[:25]
             print(f"{short_key:<42} {val_type:<12} {ttl:<16} {preview}")
 
-    print("\n" + "═" * 88)
-    print("  📁 EXPORTED DATABASE FILES READY TO SHOW PRESENTERS:")
-    print("═" * 88)
+    print("\n" + "=" * 88)
+    print("  EXPORTED DATABASE FILES READY TO SHOW PRESENTERS:")
+    print("=" * 88)
     print(f"  1. [SQL Schema DDL]     -> database/schema.sql")
     print(f"  2. [Postgres SQL Dump]  -> database/seed_data.sql")
     print(f"  3. [Redis JSON Dump]    -> database/redis_cache_snapshot.json")
     print(f"  4. [Redis CLI Commands] -> database/redis_commands.redis")
-    print("═" * 88 + "\n")
+    print("=" * 88 + "\n")
 
 if __name__ == "__main__":
     show_postgres()
