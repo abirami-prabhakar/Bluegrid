@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Blue Grid Website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_website.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run TOPSIS Analysis",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_topsis.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}
